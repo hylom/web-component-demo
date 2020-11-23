@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>test</title>
+  <script src="dial.js"></script>
+  <style>
+    dial-meter#meter1 {
+        width: 200px;
+        --stroke-width: 20;
+        --radius: 30;
+        color: rgba(255,0,0,1.0);
+        --inactive-color: rgba(255,0,0,0.1);
+        background-color: rgba(0, 0, 255, 0.1);
+    }
+    dial-meter#meter2 {
+        width: 100px;
+        --stroke-width: 1;
+        --radius: 40;
+        color: rgba(0,128,255,1.0);
+        --inactive-color: rgba(255,255,255,0.3);
+        background-color: rgba(0, 0, 0, 1.0);
+    }
+  </style>
+</head>
+
+<body>
+  <div style="display: flex;">
+    <div style="flex: 0 0;">
+      <dial-meter id="meter1" value="50"></dial-meter>
+      <label>
+        value: <input type="range" id="meter1-value"
+                      min="0" max="100" value="50" >
+      </label>
+    </div>
+    <div style="flex: 0 0;">
+      <dial-meter id="meter2" value="50"></dial-meter>
+      <label>
+        value: <input type="range" id="meter2-value"
+                      min="0" max="100" value="50" >
+      </label>
+    </div>
+  </div>
+</body>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const meterValue1 = document.getElementById("meter1-value");
+    meterValue1.addEventListener('change', () => {
+      document.getElementById("meter1").setAttribute('value', meterValue1.value);
+    });
+    const meterValue2 = document.getElementById("meter2-value");
+    meterValue2.addEventListener('change', () => {
+      document.getElementById("meter2").setAttribute('value', meterValue2.value);
+    });
+  });
+</script>
+
+</html>
